@@ -1,8 +1,11 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
+title: "Racism Within the United States Prison System"
+author: "Cole Meier"
 date: '2022-11-01'
 output: html_document
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE}
@@ -10,36 +13,107 @@ source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
 
-## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+## Abstract
 
-# Test (TODO: Remove before submission!!)
+This analysis is examining the United States prison system, and the
+potential injustices within it. The data showed that they did not keep
+record of race in the prison system until the 80's. Once they began
+keeping track of race, a definite racial bias appeared in the data. The
+proportion of incarcerated black people far out weighed their total
+general population proportion.
+
+## Introduction
+
+The United States has a history of repeated and targeted oppression
+towards black people in America. This report will specifically dissect
+the in proportionate incarceration of different races in America. This
+will be viewing whether there is a direct correlation between race and
+the likelihood of incarceration in this country. The direct stakeholders
+for this cause are the millions of minorities in this country that are
+directly affected by the findings of this report. This has many outside
+implications, including the amount of single mother homes, generational
+wealth, and biases that effect the well being of individuals. The goal
+of this report is to educate the masses on the racism that is ingrained
+in our society for an area that is often overlooked. This will
+optimistically aid in chipping away at the matrix of domination in this
+country. This goal will be achieved by answering the following:
+
+1.  What percentage of the prison population is a minority?
+2.  Which races has the highest proportion of incarceration per capita?
+3.  Which race has the lowest proportion of incarceration per captia?
+
+Answering thesequestions will enable us to make a complete evaluation of
+the biases within the prison system in America.
+
+## Data Summary
+
+The proportion of the total number of black people incarcerated is much
+higher compared to how much of the population they make up. Black people
+make up around 13% of the population, but they make up on average 27% of
+the total prison population. Compared to white population which makes up
+around 57% of the total population, but only make up on average 45
+percent of the total prison population. This points to possible racial
+bias in the American prison system. Another important statistic is the
+top-5 states with the highest incarceration. Most of the states on the
+list are more expected due to their large populations, however, Georgia
+is outside the top 5 highest total population, but is number 4 in total
+incarcerated population. This shows the possibility of an unfair
+judicial system and over policing in Georgia.
+
+## Growth of the U.S. Prison Population
+
+This bar graph is a representation of the total jail populations from
+1970 to 2018. This shows that the number of people in jail was steady
+through the seventies. Then is started rapidly raising until the peak in
+2008. Since 2008, the total jail population has remained relatively
+consistent.
+
 ```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
-
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
+plot_jail_pop_for_us()
 ```
 
-## Introduction 
-[TODO]
+The total prison population by year
 
-## Data Summary 
-[TODO]
+## Growth of Prison Population by State
 
-[TODO ... other sections ... See Canvas for details]
+This bar graph is a representation of the total jail population of
+Washington, California, and Oregon, from 1970 to 2018. This has a very
+similar trend to the total jail population of the whole country,
+however, the upwards trend is a lot more steep. This upwards trend in
+total jail population happens between 1980 and the early 2000's.
 
-_All the very best with your work!_
+```{r echo=FALSE}
+plot_jail_pop_by_states(c("WA", "CA", "OR"))
+```
 
+Total jail population of Washington, California, and Oregon, from 1970
+to 2018.
+
+## Growth of Black Prison Population
+
+This bar graph is a representation of the growth of the total black jail
+population from 1970 to 2018. This graph shows that they did not keep
+track of the quantity of black people in prisons until 1985, causing the
+large spike. After they began to get recorded, the amount of black
+people incarcerated skyrocketed. The number began to decrease in the mid
+2000's, and began to level out after around 2013.
+
+```{r echo=FALSE}
+plot_black_jail_pop()
+```
+
+Total jail population of black people in America
+
+## Area Map of Percentage of Black Prison Population
+
+This is the representation of the two cities with the highest amount of
+black people incarcerated in 2018. These locations can signify how the
+injustice of black people in prison can become normalized within the
+culture. These areas most likely also have higher numbers of black
+families without parental figures in the home because of this injustice.
+
+```{r echo=FALSE}
+plotting_cities()
+```
+
+The cities with the highest number of incarcerated black people in 2018
