@@ -1,22 +1,8 @@
 library(tidyverse)
-
+library(maps)
 # The functions might be useful for A4
 source("../source/a4-helpers.R")
 
-## Test queries ----
-#----------------------------------------------------------------------------#
-# Simple queries for basic testing
-#----------------------------------------------------------------------------#
-# Return a simple string
-test_query1 <- function() {
-  return ("Hello world")
-}
-
-# Return a vector of numbers
-test_query2 <- function(num=6) {
-  v <- seq(1:num)
-  return(v)
-}
 
 ## Section 2  ---- 
 #----------------------------------------------------------------------------#
@@ -122,6 +108,7 @@ plot_jail_pop_by_states("WA")
 # Your functions might go here ... <todo:  update comment>
 # See Canvas
 get_black_jail_pop <- function() {
+  incarceration_df_new <- incarceration_df
   black_jail_pop <- aggregate(
     x = incarceration_df_new$black_jail_pop,
     by = list(incarceration_df_new$year),
@@ -155,6 +142,8 @@ states <- data.frame(
   lat = c(34.0522, 32.5539),
   long = c(-118.2437, -94.3154)
   )
+state_shape <- map_data("state")
+
 plotting_cities <- function(){
   ggplot(state_shape) + 
   geom_polygon(mapping = aes(x = long, y = lat, group = group)) + 

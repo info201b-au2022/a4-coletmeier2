@@ -18,25 +18,12 @@ incarceration_df <- read.csv("https://raw.githubusercontent.com/vera-institute/i
 # Return the list of states in a region.  The regions are: 
 #    Midwest, Northeast, South, West
 #----------------------------------------------------------------------------#
-states_in_region <- function(p_region) {
-  the_states <- incarceration_df %>%
-    filter(region == p_region) %>%
-    distinct(state) %>%
-    pull(state)
-  return(the_states)
-}
-states_in_region()
+
 #----------------------------------------------------------------------------#
 # Return the list of divisions in a region. The regions are: 
 # Midwest, Northeast, South, West
 #----------------------------------------------------------------------------#
-divisions_in_region <- function(p_region) {
-  the_divisions <- incarceration_df %>%
-    filter(region == p_region) %>%
-    distinct(division) %>%
-    pull(division)
-  return(the_divisions)
-}
+
 
 #----------------------------------------------------------------------------#
 # Return the list of states in a region.  The divisions are: 
@@ -50,78 +37,26 @@ divisions_in_region <- function(p_region) {
 #    West North Central
 #    West South Central
 #----------------------------------------------------------------------------#
-states_in_division <- function(p_division) {
-  the_states <- incarceration_df %>%
-    filter(division == p_division) %>%
-    distinct(state) %>%
-    pull(state)
-  return(the_states)
-}
+
 
 #----------------------------------------------------------------------------#
 # Returns TRUE if the place is a state 
 #----------------------------------------------------------------------------#
-is_state <- function(p_place) {
-  the_states <- incarceration_df %>%
-    filter(state == p_place) %>%
-    distinct(state) %>%
-    pull(state)
-  if (length(the_states > 0)) {
-    return(TRUE)
-  }
-  else {
-    return(FALSE)
-  }
-}
 
 #----------------------------------------------------------------------------#
 # Returns a list of states for region or division. If place is a state
 # just return it.
-#----------------------------------------------------------------------------#
-states_in_region_or_division <- function(place) {
-  states <- c()
-  if (place %in% c("Midwest", "Northeast", "South", "West")) {
-    states <- states_in_region(place)
-  } else {
-    states <- states_in_division(place)
-    if (length(states)==0) {
-      if(is_state(place)) {
-        return(c(place))
-      }
-      else {
-        stop(paste0("Invalid place name (\"",place, "\")"))
-      }
-    }
-  }
-  return(states)
-}
+
 
 # Useful queries ----
 #----------------------------------------------------------------------------#
 # Do some states have no jail populations? If so, which states?
 #----------------------------------------------------------------------------#
-states_with_no_jail_pop <- function(df) {
-  t <- incarceration_df %>%
-    group_by(state) %>%
-    summarise(p = sum(total_jail_pop, na.rm = TRUE)) %>%
-    filter(p == 0) %>%
-    select(state, p) %>%
-    pull(state)
-  return(t)
-}
-states_with_no_jail_pop()
+
 # Basic info ----
 #----------------------------------------------------------------------------#
 # Format some region information (currently, only the divisions)
 #----------------------------------------------------------------------------#
-format_region_info <- function(region) {
-  t <- ""
-  t <- paste0(t, "  in '", region, "': ")
-  d <- divisions_in_region(region)
-  t_divisions <-  paste0(d, collapse = " | ")
-  t <- paste0(t, t_divisions)
-  return(t)
-}
 
 #----------------------------------------------------------------------------#
 # Show some basic information about the dataset

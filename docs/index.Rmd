@@ -10,7 +10,7 @@ editor_options:
 
 ```{r echo=FALSE, eval=TRUE, message=FALSE}
 source("~/Documents/Info_201/Assignments/a4-coletmeier2/source/a4-helpers.R")
-source("~/Documents/Info_201/Assignments/a4-coletmeier2/source/source/analysis.R")
+source("~/Documents/Info_201/Assignments/a4-coletmeier2/source/analysis.R")
 ```
 
 ## Abstract
